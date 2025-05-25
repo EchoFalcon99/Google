@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fake Google</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 270px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      width: 500px;
+      max-width: 90%;
+      border: 1px solid #dfe1e5;
+      border-radius: 24px;
+      padding: 10px 20px;
+      box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    }
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: #f8f9fa;
+      border: 1px solid #f8f9fa;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .buttons button:hover {
+      border: 1px solid #c6c6c6;
+    }
+
+    .results {
+      display: none;
+      margin-top: 40px;
+      width: 90%;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .results h2 {
+      font-size: 24px;
+      color: #202124;
+    }
+
+    .results img {
+      width: 150px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .blue-bar {
+      display: none;
+      height: 3px;
+      background-color: #4285f4;
+      animation: loading 1.2s linear forwards;
+      margin-top: 20px;
+      width: 0;
+    }
+
+    @keyframes loading {
+      to {
+        width: 100%;
+      }
+    }
+
+    .url-bar {
+      display: none;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #70757a;
+    }
+
+    .tabs {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .tabs span {
+      margin-right: 20px;
+      font-weight: bold;
+      color: #1a0dab;
+      cursor: pointer;
+    }
+
+    .random-box {
+      margin-top: 30px;
+      padding: 10px;
+      background: #f1f3f4;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Fake Google Logo">
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search Google...">
+  </div>
+  <div class="buttons">
+    <button onclick="performSearch()">Google Search</button>
+  </div>
+
+  <div class="url-bar" id="urlBar">www.com/<span id="urlText"></span></div>
+  <div class="blue-bar" id="blueBar"></div>
+
+  <div class="tabs" id="tabs">
+    <span>All</span>
+    <span>Images</span>
+    <span>Videos</span>
+    <span>News</span>
+    <span>More</span>
+  </div>
+
+  <div class="results" id="results">
+    <h2>Bisma Shabir - Profile</h2>
+    <p><strong>Location:</strong> Satellite Town, Rawalpindi, Pakistan</p>
+    <p><strong>Education:</strong> BS Psychology Student</p>
+    <p><strong>Birthday:</strong> 6th June</p>
+    <p><strong>Favorites:</strong> Yellow & Black | Long Drives | Music | Traveling</p>
+    <img src="https://files.catbox.moe/8n4ikh.jpg" alt="Bisma Picture">
+
+    <div class="random-box">
+      <h3>Pinned: Punjab University Official Site</h3>
+      <p>Explore courses, admissions, and campus life at <a href="#">pu.edu.pk</a></p>
+    </div>
+  </div>
+
+  <script>
+    function performSearch() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      if (input === "bisma") {
+        document.getElementById("urlText").innerText = input;
+        document.getElementById("urlBar").style.display = "block";
+        document.getElementById("blueBar").style.display = "block";
+        document.getElementById("tabs").style.display = "none";
+        document.getElementById("results").style.display = "none";
+
+        setTimeout(() => {
+          document.getElementById("tabs").style.display = "flex";
+          document.getElementById("results").style.display = "block";
+        }, 1200);
+      } else {
+        alert("Please type 'Bisma' to view results.");
+      }
+    }
+  </script>
+</body>
+</html>
